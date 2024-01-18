@@ -81,11 +81,11 @@ def add_fib_circle(my_array, n, k):
 
 
 def add_fib_golden(my_array, n, k):
-    delta_angle = 137.5
+
     radius_f0 = 0
     radius_f1 = 1
 
-    golden_angle = 15
+    golden_angle = 137.5
     angle = 0
     while True:
         radius = radius_f0 + radius_f1
@@ -101,7 +101,9 @@ def add_fib_golden(my_array, n, k):
 
         angle += golden_angle
 
-        my_array[x, y] = 255
+        my_array[(x-1):(x+1), (y-1):(y+1)] = 255
+
+        print(radius, np.mod(angle, 360), x, y)
 
 
     return my_array
