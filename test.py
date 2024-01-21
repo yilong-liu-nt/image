@@ -107,6 +107,8 @@ def add_fib_golden(my_array, n, k):
 
 
     return my_array
+
+
 def cows(my_array, n):
     for x in range(n):
         radius =  (n-2)//3
@@ -119,11 +121,35 @@ def cows(my_array, n):
     return my_array
 
 
+def add_golden_spiral(my_array, n, angle_0 = 0):
+
+    golden_angle = 137.5
+    angle = angle_0
+    radius = 1
+    while radius < n//2:
+
+        x = radius * math.cos(angle/180 *math.pi) + n//2
+        x = int(x)
+        y = radius * math.sin(angle/180 *math.pi) + n//2
+        y = int(y)
+
+        angle += golden_angle
+
+        my_array[(x-1):(x+1), (y-1):(y+1)] = 255
+
+        print(radius, np.mod(angle, 360), x, y)
+        radius += 0.2
+
+    return my_array
+
+
 # my_array = add_x(my_array, n, k)
 # my_array = add_black_white(my_array, n, k)
 # my_array = add_circle(my_array, n, k)
 # my_array = add_fib_circle(my_array, n, k)
 # my_array = add_fib_golden(my_array, n, k)
-my_array = cows(my_array, n)
+# my_array = cows(my_array, n)
+
+my_array = add_golden_spiral(my_array, n, k)
 my_image = Image.fromarray(my_array)
 my_image.show()
