@@ -107,12 +107,20 @@ def add_fib_golden(my_array, n, k):
 
 
     return my_array
+def cows(my_array, n):
+    for x in range(n):
+        y = math.sin( x*math.pi/2 /30) * (n-2)//3+ n//2
+        y = int(y)
+        print(x, y)
+        my_array[x,y] = 255
+    return my_array
+
 
 # my_array = add_x(my_array, n, k)
 # my_array = add_black_white(my_array, n, k)
 # my_array = add_circle(my_array, n, k)
 # my_array = add_fib_circle(my_array, n, k)
-my_array = add_fib_golden(my_array, n, k)
-
+# my_array = add_fib_golden(my_array, n, k)
+my_array = cows(my_array, n)
 my_image = Image.fromarray(my_array)
 my_image.show()
