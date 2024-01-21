@@ -109,10 +109,13 @@ def add_fib_golden(my_array, n, k):
     return my_array
 def cows(my_array, n):
     for x in range(n):
-        y = math.sin( x*math.pi/2 /30) * (n-2)//3+ n//2
+        radius =  (n-2)//3
+        offset = n //2 
+        k = 100
+        y = math.sin( x*math.pi/2 /30) * radius + offset
         y = int(y)
         print(x, y)
-        my_array[x,y] = 255
+        my_array[y, x] = 255
     return my_array
 
 
