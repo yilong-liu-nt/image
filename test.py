@@ -143,13 +143,59 @@ def add_golden_spiral(my_array, n, angle_0 = 0):
     return my_array
 
 
+
+def add_triangle(my_array, n, p1, p2, p3):
+
+    def draw_line(my_array, p1, p2):
+        x1, y1 = p1
+        x2, y2 = p2
+
+        if x1 != x2:
+            slope = (y2-y1)/(x2-x1)
+
+            if x2 >= x1:
+                for x in np.arange(x1, x2, 0.1):
+                    y = (x-x1) * slope + y1
+
+                    my_array[int(x), int(y)] = 255
+            else:
+                for x in np.arange(x2, x1, 0.1):
+                    y = (x-x1) * slope + y1
+
+                    my_array[int(x), int(y)] = 255
+
+
+        else:
+            if y2 >= y1:
+                for y in range(y1, y2+1):
+                    my_array[x1, y] = 255
+            else:
+                for y in range(y2, y1+1):
+                    my_array[x1, y] = 255
+
+
+    
+    # draw a line between p1 and p2
+    draw_line(my_array, p1, p2)
+
+
+    # draw a line between p2 and p3
+    draw_line(my_array, p2, p3)
+
+
+    # draw a line between p1 and p3
+    draw_line(my_array, p1, p3)
+
+    return my_array
+
 # my_array = add_x(my_array, n, k)
 # my_array = add_black_white(my_array, n, k)
 # my_array = add_circle(my_array, n, k)
 # my_array = add_fib_circle(my_array, n, k)
 # my_array = add_fib_golden(my_array, n, k)
 # my_array = cows(my_array, n)
+# my_array = add_golden_spiral(my_array, n, k)
 
-my_array = add_golden_spiral(my_array, n, k)
+my_array = add_triangle(my_array, n, (69, 69), (42, 800), (420, 900))
 my_image = Image.fromarray(my_array)
 my_image.show()
